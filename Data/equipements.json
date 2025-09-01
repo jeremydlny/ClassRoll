@@ -1,0 +1,9 @@
+{
+  "tactiques": [
+    "Grenade paralysante", "Grenade flash", "Caméra-espiion", "Fumigène", "Alarme de proximité","Stimulant", "Leurre", "Charge électrique"
+  ],
+  "mortels": [
+    "Grenade à fragmentation", "Bombe collante","C4", "Grenade thermobarique", "Grenade d'impact", "Cocktail molotox",
+    "Charge pénétrante", "Piège explosif","Hache de comnbat"
+  ]
+}

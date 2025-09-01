@@ -1,0 +1,45 @@
+{
+  "atout_1": [
+    "Après-rasage",
+    "Fonceur", 
+    "Dextérité",
+    "Pillard",
+    "Fantôme",
+    "Ninja",
+    "Protection balistique",
+    "Masque tactique"
+  ],
+  "atout_2": [
+    "Instinct de chasseur",
+    "Assassin",
+    "Colosse", 
+    "Vendetta",
+    "Ingénieur",
+    "Traqueur",
+    "Partage de renseignements",
+    "Obscurité",
+    "Logisticien",
+    "Main leste"
+  ],
+  "atout_3": [
+    "Sillage",
+    "Pas de course", 
+    "Financement",
+    "Radar shrapnel",
+    "Vigilance",
+    "Sang-froid",
+    "Quartier-maître",
+    "Gardien",
+    "Folie mécanique"
+  ],
+  "nombre_par_classe": 3,
+  "metadata": {
+    "jeu": "Call of Duty: Black Ops 6",
+    "system": "3_slots_atouts",
+    "total_atout_1": 8,
+    "total_atout_2": 10,
+    "total_atout_3": 9,
+    "derniere_maj": "2024-01-15",
+    "source": "donnees_reelles_bo6"
+  }
+}
