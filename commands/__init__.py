@@ -109,6 +109,8 @@ async def setup(bot):
 
     @bot.tree.command(name="aide", description="📖 Affiche l'aide du bot BO6")
     async def slash_aide(interaction: discord.Interaction):
+        await interaction.response.defer()
+        
         # Supprime le dernier message d'aide dans ce canal s'il existe
         channel_id = interaction.channel_id
         await delete_last_message(channel_id, last_aide_messages)
@@ -117,7 +119,7 @@ async def setup(bot):
         view = AideView()
         embed = create_aide_embed()
         
-        await interaction.response.send_message(embed=embed, view=view)
+        await interaction.followup.send(embed=embed, view=view)
         # Stocke la référence du nouveau message
         message = await interaction.original_response()
         last_aide_messages[channel_id] = message
@@ -125,8 +127,40 @@ async def setup(bot):
     @bot.tree.command(name="sync", description="🔄 Synchronise les commandes du bot")
     @commands.is_owner()  # Seul le propriétaire du bot peut utiliser cette commande
     async def sync(interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
         try:
             synced = await bot.tree.sync()
-            await interaction.response.send_message(f"✅ {len(synced)} commandes synchronisées !", ephemeral=True)
+            await interaction.followup.send(f"✅ {len(synced)} commandes synchronisées !", ephemeral=True)
         except Exception as e:
-            await interaction.response.send_message(f"❌ Erreur lors de la synchronisation : {str(e)}", ephemeral=True)
+            await interaction.followup.send(f"❌ Erreur lors de la synchronisation : {str(e)}", ephemeral=True)
+
+    class DeleteConfirmView(discord.ui.View):
+        def __init__(self, bot):
+            super().__init__(timeout=30)
+            self.bot = bot
+
+        @discord.ui.button(label="🗑️ Oui", style=discord.ButtonStyle.danger)
+        async def confirm(self, interaction: discord.Interaction, button: discord.ui.Button):
+            await interaction.response.defer()
+            count = 0
+            async for msg in interaction.channel.history(limit=100):
+                if msg.author == self.bot.user:
+                    try:
+                        await msg.delete()
+                        count += 1
+                    except (discord.NotFound, discord.Forbidden):
+                        pass
+            await interaction.followup.send(f"✅ {count} messages du bot supprimés.", ephemeral=True)
+
+        @discord.ui.button(label="❌ Non", style=discord.ButtonStyle.secondary)
+        async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
+            await interaction.response.send_message("❌ Suppression annulée.", ephemeral=True)
+
+    @bot.tree.command(name="delete", description="🧹 Supprime tous les messages du bot dans ce salon")
+    async def slash_delete(interaction: discord.Interaction):
+        view = DeleteConfirmView(bot)
+        await interaction.response.send_message(
+            "⚠️ **Voulez-vous supprimer tous les messages du bot dans ce salon ?**\n\n*Cette action ne peut pas être annulée.*",
+            view=view,
+            ephemeral=True
+        )
