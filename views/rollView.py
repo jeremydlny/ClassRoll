@@ -63,6 +63,8 @@ class RollView(discord.ui.View):
 
     @discord.ui.button(label='🔫 ARME PRINCIPALE', style=discord.ButtonStyle.secondary, row=1)
     async def arme_principale_direct(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        
         # Import local pour éviter les imports circulaires
         from views.principaleView import PrincipaleView
         update_stats("principale")
@@ -74,10 +76,12 @@ class RollView(discord.ui.View):
             color=0x00ccff,
             timestamp=datetime.now()
         )
-        await interaction.response.send_message(embed=embed, view=view)
+        await interaction.edit_original_response(embed=embed, view=view)
 
     @discord.ui.button(label='🗡️ ARME SECONDAIRE', style=discord.ButtonStyle.secondary, row=1)
     async def arme_secondaire_direct(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        
         # Import local pour éviter les imports circulaires
         from views.secondaireView import SecondaireView
         update_stats("secondaire")
@@ -89,7 +93,7 @@ class RollView(discord.ui.View):
             color=0x00ccff,
             timestamp=datetime.now()
         )
-        await interaction.response.send_message(embed=embed, view=view)
+        await interaction.edit_original_response(embed=embed, view=view)
 
 @lru_cache(maxsize=128)  # Cache pour éviter de recréer les mêmes embeds
 def _create_embed_cached(arme_principale, arme_secondaire, atout_1, atout_2, atout_3, equipement_tactique, equipement_mortel, timestamp_str):
