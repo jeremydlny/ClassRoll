@@ -31,11 +31,15 @@ async def setup(bot):
     # Commandes
     @bot.tree.command(name="roll", description="🎲 Génère une classe aléatoire complète")
     async def slash_roll(interaction: discord.Interaction):
+        # Vérifier si l'interaction est encore valide
+        if interaction.response.is_done():
+            return
+            
         # TOUJOURS defer en premier pour éviter l'expiration
         try:
             await interaction.response.defer()
-        except discord.errors.NotFound:
-            # L'interaction a déjà expiré, on ne peut rien faire
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
+            # L'interaction a déjà expiré ou a été utilisée, on ne peut rien faire
             return
         
         update_stats("roll_slash")
@@ -61,15 +65,18 @@ async def setup(bot):
             # Obtient le message envoyé
             message = await interaction.original_response()
             last_roll_messages[channel_id] = message
-        except discord.errors.NotFound:
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
             # L'interaction a expiré pendant le traitement
             pass
 
     @bot.tree.command(name="principale", description="🔫 Choisir une arme principale par catégorie")
     async def slash_principale(interaction: discord.Interaction):
+        if interaction.response.is_done():
+            return
+            
         try:
             await interaction.response.defer()
-        except discord.errors.NotFound:
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
             return
         
         update_stats("principale")
@@ -90,14 +97,17 @@ async def setup(bot):
             # Stocke la référence du nouveau message
             message = await interaction.original_response()
             last_principale_messages[channel_id] = message
-        except discord.errors.NotFound:
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
             pass
 
     @bot.tree.command(name="secondaire", description="🗡️ Choisir une arme secondaire par catégorie")
     async def slash_secondaire(interaction: discord.Interaction):
+        if interaction.response.is_done():
+            return
+            
         try:
             await interaction.response.defer()
-        except discord.errors.NotFound:
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
             return
         
         update_stats("secondaire")
@@ -118,14 +128,17 @@ async def setup(bot):
             # Stocke la référence du nouveau message
             message = await interaction.original_response()
             last_secondaire_messages[channel_id] = message
-        except discord.errors.NotFound:
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
             pass
 
     @bot.tree.command(name="défis", description="🏆 Choisir un défi aléatoire")
     async def slash_defis(interaction: discord.Interaction):
+        if interaction.response.is_done():
+            return
+            
         try:
             await interaction.response.defer()
-        except discord.errors.NotFound:
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
             return
         
         update_stats("defis")
@@ -143,7 +156,7 @@ async def setup(bot):
             # Stocke la référence du nouveau message
             message = await interaction.original_response()
             last_defi_messages[channel_id] = message
-        except discord.errors.NotFound:
+        except (discord.errors.NotFound, discord.errors.InteractionResponded):
             pass
 
     @bot.tree.command(name="aide", description="📖 Affiche l'aide du bot BO6")
