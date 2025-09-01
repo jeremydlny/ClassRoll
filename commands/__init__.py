@@ -31,8 +31,12 @@ async def setup(bot):
     # Commandes
     @bot.tree.command(name="roll", description="🎲 Génère une classe aléatoire complète")
     async def slash_roll(interaction: discord.Interaction):
-        # Réponse immédiate pour la réactivité
-        await interaction.response.defer()
+        # TOUJOURS defer en premier pour éviter l'expiration
+        try:
+            await interaction.response.defer()
+        except discord.errors.NotFound:
+            # L'interaction a déjà expiré, on ne peut rien faire
+            return
         
         update_stats("roll_slash")
         
@@ -52,14 +56,21 @@ async def setup(bot):
         view = RollView(classe)
         
         # Édition après coup pour une meilleure réactivité
-        await interaction.edit_original_response(embed=embed, view=view)
-        # Obtient le message envoyé
-        message = await interaction.original_response()
-        last_roll_messages[channel_id] = message
+        try:
+            await interaction.edit_original_response(embed=embed, view=view)
+            # Obtient le message envoyé
+            message = await interaction.original_response()
+            last_roll_messages[channel_id] = message
+        except discord.errors.NotFound:
+            # L'interaction a expiré pendant le traitement
+            pass
 
     @bot.tree.command(name="principale", description="🔫 Choisir une arme principale par catégorie")
     async def slash_principale(interaction: discord.Interaction):
-        await interaction.response.defer()
+        try:
+            await interaction.response.defer()
+        except discord.errors.NotFound:
+            return
         
         update_stats("principale")
         
@@ -74,14 +85,20 @@ async def setup(bot):
             color=0x00ccff,
             timestamp=datetime.now()
         )
-        await interaction.edit_original_response(embed=embed, view=view)
-        # Stocke la référence du nouveau message
-        message = await interaction.original_response()
-        last_principale_messages[channel_id] = message
+        try:
+            await interaction.edit_original_response(embed=embed, view=view)
+            # Stocke la référence du nouveau message
+            message = await interaction.original_response()
+            last_principale_messages[channel_id] = message
+        except discord.errors.NotFound:
+            pass
 
     @bot.tree.command(name="secondaire", description="🗡️ Choisir une arme secondaire par catégorie")
     async def slash_secondaire(interaction: discord.Interaction):
-        await interaction.response.defer()
+        try:
+            await interaction.response.defer()
+        except discord.errors.NotFound:
+            return
         
         update_stats("secondaire")
         
@@ -96,14 +113,20 @@ async def setup(bot):
             color=0x00ccff,
             timestamp=datetime.now()
         )
-        await interaction.edit_original_response(embed=embed, view=view)
-        # Stocke la référence du nouveau message
-        message = await interaction.original_response()
-        last_secondaire_messages[channel_id] = message
+        try:
+            await interaction.edit_original_response(embed=embed, view=view)
+            # Stocke la référence du nouveau message
+            message = await interaction.original_response()
+            last_secondaire_messages[channel_id] = message
+        except discord.errors.NotFound:
+            pass
 
     @bot.tree.command(name="défis", description="🏆 Choisir un défi aléatoire")
     async def slash_defis(interaction: discord.Interaction):
-        await interaction.response.defer()
+        try:
+            await interaction.response.defer()
+        except discord.errors.NotFound:
+            return
         
         update_stats("defis")
         from views.defiView import DefiView, create_defi_embed
@@ -115,10 +138,13 @@ async def setup(bot):
         view = DefiView()
         embed = create_defi_embed()
         
-        await interaction.edit_original_response(embed=embed, view=view)
-        # Stocke la référence du nouveau message
-        message = await interaction.original_response()
-        last_defi_messages[channel_id] = message
+        try:
+            await interaction.edit_original_response(embed=embed, view=view)
+            # Stocke la référence du nouveau message
+            message = await interaction.original_response()
+            last_defi_messages[channel_id] = message
+        except discord.errors.NotFound:
+            pass
 
     @bot.tree.command(name="aide", description="📖 Affiche l'aide du bot BO6")
     async def slash_aide(interaction: discord.Interaction):
