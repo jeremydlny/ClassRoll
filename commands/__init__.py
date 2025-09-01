@@ -16,72 +16,55 @@ async def setup(bot):
     last_defi_messages = {}
     last_aide_messages = {}
 
+    # Fonction helper pour supprimer un message de manière sûre et non-bloquante
+    async def safe_delete_message(message, message_dict, channel_id):
+        try:
+            await message.delete()
+            message_dict.pop(channel_id, None)
+        except (discord.NotFound, discord.Forbidden):
+            message_dict.pop(channel_id, None)
+
     # Fonction helper optimisée pour supprimer l'ancien message
     async def delete_last_message(channel_id, message_dict):
         if channel_id in message_dict:
-            try:
-                last_message = message_dict[channel_id]
-                # Suppression asynchrone sans attendre
-                await last_message.delete()
-                del message_dict[channel_id]  # Nettoyer le cache
-            except (discord.NotFound, discord.Forbidden):
-                # Nettoyer le cache même si la suppression échoue
-                message_dict.pop(channel_id, None)
+            old_message = message_dict.get(channel_id)
+            if old_message:
+                bot.loop.create_task(safe_delete_message(old_message, message_dict, channel_id))
 
     # Commandes
     @bot.tree.command(name="roll", description="🎲 Génère une classe aléatoire complète")
     async def slash_roll(interaction: discord.Interaction):
-        # Vérifier si l'interaction est encore valide
-        if interaction.response.is_done():
-            return
-            
-        # TOUJOURS defer en premier pour éviter l'expiration
-        try:
-            await interaction.response.defer()
-        except (discord.errors.NotFound, discord.errors.InteractionResponded):
-            # L'interaction a déjà expiré ou a été utilisée, on ne peut rien faire
-            return
-        
+        # Réponse immédiate sans defer pour éviter les problèmes d'expiration
         update_stats("roll_slash")
         
-        # Supprime le dernier message de roll dans ce canal s'il existe
-        channel_id = interaction.channel_id
-        if channel_id in last_roll_messages:
-            try:
-                last_message = last_roll_messages[channel_id]
-                await last_message.delete()
-                del last_roll_messages[channel_id]
-            except (discord.NotFound, discord.Forbidden):
-                last_roll_messages.pop(channel_id, None)
-        
-        # Génération et envoi
+        # Génération immédiate
         classe = generer_classe()
         embed = create_class_embed(classe)
         view = RollView(classe)
         
-        # Édition après coup pour une meilleure réactivité
+        # Supprime l'ancien message en arrière-plan (non bloquant)
+        channel_id = interaction.channel_id
+        if channel_id in last_roll_messages:
+            old_message = last_roll_messages.get(channel_id)
+            # Ne pas attendre la suppression pour éviter les délais
+            if old_message:
+                bot.loop.create_task(safe_delete_message(old_message, last_roll_messages, channel_id))
+        
+        # Réponse directe et immédiate
         try:
-            await interaction.edit_original_response(embed=embed, view=view)
-            # Obtient le message envoyé
+            await interaction.response.send_message(embed=embed, view=view)
+            # Stocke la référence du nouveau message
             message = await interaction.original_response()
             last_roll_messages[channel_id] = message
-        except (discord.errors.NotFound, discord.errors.InteractionResponded):
-            # L'interaction a expiré pendant le traitement
+        except (discord.errors.NotFound, discord.errors.InteractionResponded) as e:
+            # L'interaction a expiré, mais on continue sans erreur
             pass
 
     @bot.tree.command(name="principale", description="🔫 Choisir une arme principale par catégorie")
     async def slash_principale(interaction: discord.Interaction):
-        if interaction.response.is_done():
-            return
-            
-        try:
-            await interaction.response.defer()
-        except (discord.errors.NotFound, discord.errors.InteractionResponded):
-            return
-        
         update_stats("principale")
         
-        # Supprime le dernier message de principale dans ce canal s'il existe
+        # Supprime l'ancien message en arrière-plan
         channel_id = interaction.channel_id
         await delete_last_message(channel_id, last_principale_messages)
         
@@ -92,8 +75,9 @@ async def setup(bot):
             color=0x00ccff,
             timestamp=datetime.now()
         )
+        
         try:
-            await interaction.edit_original_response(embed=embed, view=view)
+            await interaction.response.send_message(embed=embed, view=view)
             # Stocke la référence du nouveau message
             message = await interaction.original_response()
             last_principale_messages[channel_id] = message
@@ -102,17 +86,9 @@ async def setup(bot):
 
     @bot.tree.command(name="secondaire", description="🗡️ Choisir une arme secondaire par catégorie")
     async def slash_secondaire(interaction: discord.Interaction):
-        if interaction.response.is_done():
-            return
-            
-        try:
-            await interaction.response.defer()
-        except (discord.errors.NotFound, discord.errors.InteractionResponded):
-            return
-        
         update_stats("secondaire")
         
-        # Supprime le dernier message de secondaire dans ce canal s'il existe
+        # Supprime l'ancien message en arrière-plan
         channel_id = interaction.channel_id
         await delete_last_message(channel_id, last_secondaire_messages)
         
@@ -123,8 +99,9 @@ async def setup(bot):
             color=0x00ccff,
             timestamp=datetime.now()
         )
+        
         try:
-            await interaction.edit_original_response(embed=embed, view=view)
+            await interaction.response.send_message(embed=embed, view=view)
             # Stocke la référence du nouveau message
             message = await interaction.original_response()
             last_secondaire_messages[channel_id] = message
@@ -133,18 +110,10 @@ async def setup(bot):
 
     @bot.tree.command(name="défis", description="🏆 Choisir un défi aléatoire")
     async def slash_defis(interaction: discord.Interaction):
-        if interaction.response.is_done():
-            return
-            
-        try:
-            await interaction.response.defer()
-        except (discord.errors.NotFound, discord.errors.InteractionResponded):
-            return
-        
         update_stats("defis")
         from views.defiView import DefiView, create_defi_embed
         
-        # Supprime le dernier message de défi dans ce canal s'il existe
+        # Supprime l'ancien message en arrière-plan
         channel_id = interaction.channel_id
         await delete_last_message(channel_id, last_defi_messages)
         
@@ -152,7 +121,7 @@ async def setup(bot):
         embed = create_defi_embed()
         
         try:
-            await interaction.edit_original_response(embed=embed, view=view)
+            await interaction.response.send_message(embed=embed, view=view)
             # Stocke la référence du nouveau message
             message = await interaction.original_response()
             last_defi_messages[channel_id] = message
