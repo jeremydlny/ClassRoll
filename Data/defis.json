@@ -1,0 +1,25 @@
+{
+  "facile": [
+    "Marcher seulement (pas de sprint)",
+    "Pas de visée (hip fire uniquement)",
+    "Pas d'équipement tactique",
+    "Une seule arme",
+    "Pas de grenades",
+    "Headshots only",
+    "Jouer sans son"
+  ],
+  "moyen": [
+    "Une seule vie par manche",
+    "Pas de minimap",
+    "Sensibilité réduite de moitié",
+    "Pas de son du jeu",
+    "Pas de sprint pendant le combat"
+  ],
+  "difficile": [
+    "Pas de HUD (interface utilisateur)",
+    "Vue inversée (haut/bas)",
+    "Tirer seulement en rafales de 3",
+    "Changer d'arme toutes les 2 éliminations",
+    "Sensibilité x2 plus élevée"
+  ]
+}

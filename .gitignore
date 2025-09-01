@@ -1,0 +1,12 @@
+# Dossiers à ignorer
+node_modules/
+_env/
+
+# Fichiers d'environnement
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class

@@ -1,0 +1,43 @@
+{
+    "principales": {
+        "fusils_d_assaut": [
+            "XM4", "AK-74", "AMES 85", "GPR 91", "MODEL L", "GOBLIN MK 2", "AS VAL",
+            "Krig C", "Cypher 091", "CR-56 AMAX", "Kilo", "FFAR", "ABR A1"
+        ],
+        "mitraillettes": [
+            "C9", "KSV", "Tanto .22", "PP-919", "Jackal PDW", "KOMPAKT 92", "Saug",
+            "PPSh-41", "LC10", "Ladra"
+        ],
+        "fusils_a_pompe": [
+            "Marine SP", "ASG-89", "Maelstrom"
+        ],
+        "mitrailleuses": [
+            "PU-21", "XMG", "GPMG-7", "Feng 82", "PML"
+        ],
+        "fusils_tactiques": [
+            "SWAT 5.56", "Tsarkov 7.62", "AEK-973", "DM-10", "TR2", "ESSEX"
+        ],
+        "fusils_de_precision": [
+            "LR 7.62", "LW3A1 Frostline", "SVD", "AMR", "HDR"
+        ]
+    },
+
+    "secondaires": {
+        "pistolets": [
+            "9mm PM",
+            "Grekhova",
+            "GS45",
+            "Stryder .22"
+        ],
+        "lanceurs": [
+            "Cigma 2B",
+            "HE-1"
+        ],
+        "special": [
+            "D.13 Sector",
+            "Olympia",
+            "Sirin 9mm",
+            "Pistolet à clou"
+        ]
+    }
+}
