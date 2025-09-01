@@ -26,7 +26,16 @@ class DefiView(discord.ui.View):
         super().__init__(timeout=300)
         self.classe = classe
 
-    @discord.ui.button(label='🟢 Facile', style=discord.ButtonStyle.success)
+    @discord.ui.button(label="↩️ Retour", style=discord.ButtonStyle.secondary, row=1)
+    async def retour(self, interaction: discord.Interaction, button: discord.ui.Button):
+        from views.rollView import RollView, create_class_embed
+        from utils.classGenerator import generer_classe
+        classe = generer_classe()
+        embed = create_class_embed(classe)
+        view = RollView(classe)
+        await interaction.response.edit_message(embed=embed, view=view)
+
+    @discord.ui.button(label='🟢 Facile', style=discord.ButtonStyle.success, row=0)
     async def facile(self, interaction: discord.Interaction, button: discord.ui.Button):
         defis_faciles = safe_list(defis_data, 'facile')
         if not defis_faciles:

@@ -7,7 +7,16 @@ class SecondaireView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=300)
 
-    @discord.ui.button(label="Pistolets", style=discord.ButtonStyle.primary, row=0)
+    @discord.ui.button(label="↩️ Retour", style=discord.ButtonStyle.secondary, row=1)
+    async def retour(self, interaction: discord.Interaction, button: discord.ui.Button):
+        from views.rollView import RollView, create_class_embed
+        from utils.classGenerator import generer_classe
+        classe = generer_classe()
+        embed = create_class_embed(classe)
+        view = RollView(classe)
+        await interaction.response.edit_message(embed=embed, view=view)
+
+    @discord.ui.button(label="🔫 Pistolets", style=discord.ButtonStyle.primary, row=0)
     async def pistolets(self, interaction: discord.Interaction, button: discord.ui.Button):
         armes = find_category_list("Pistolets")
         if not armes:
@@ -16,7 +25,7 @@ class SecondaireView(discord.ui.View):
         embed = discord.Embed(title="🔫 Secondaire — Pistolets", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
-    @discord.ui.button(label="Lanceurs", style=discord.ButtonStyle.primary, row=0)
+    @discord.ui.button(label="🚀 Lanceurs", style=discord.ButtonStyle.primary, row=0)
     async def lanceurs(self, interaction: discord.Interaction, button: discord.ui.Button):
         armes = find_category_list("Lanceurs")
         if not armes:
@@ -25,7 +34,7 @@ class SecondaireView(discord.ui.View):
         embed = discord.Embed(title="🔫 Secondaire — Lanceurs", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
-    @discord.ui.button(label="Spécial", style=discord.ButtonStyle.primary, row=0)
+    @discord.ui.button(label="⚔️ Spécial", style=discord.ButtonStyle.primary, row=0)
     async def special(self, interaction: discord.Interaction, button: discord.ui.Button):
         armes = find_category_list("Spécial")
         if not armes:
