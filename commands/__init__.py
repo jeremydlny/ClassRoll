@@ -150,6 +150,11 @@ async def setup(bot):
                         count += 1
                     except (discord.NotFound, discord.Forbidden):
                         pass
+            # Supprimer le message de confirmation
+            try:
+                await interaction.message.delete()
+            except (discord.NotFound, discord.Forbidden):
+                pass
             await interaction.followup.send(f"✅ {count} messages du bot supprimés.", ephemeral=True)
 
         @discord.ui.button(label="❌ Non", style=discord.ButtonStyle.secondary)
