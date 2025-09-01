@@ -22,7 +22,7 @@ class PrincipaleView(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 Principale — Mitraillettes", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Mitraillettes", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Fusils à pompe", style=discord.ButtonStyle.primary, row=1)
@@ -31,7 +31,7 @@ class PrincipaleView(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 Principale — Fusils à pompe", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Fusils à pompe", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Mitrailleuses", style=discord.ButtonStyle.primary, row=1)
@@ -40,7 +40,7 @@ class PrincipaleView(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 Principale — Mitrailleuses", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Mitrailleuses", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Fusils tactiques", style=discord.ButtonStyle.primary, row=2)
@@ -49,7 +49,7 @@ class PrincipaleView(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 Principale — Fusils tactiques", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Fusils tactiques", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Fusils de précision", style=discord.ButtonStyle.primary, row=2)
@@ -58,5 +58,5 @@ class PrincipaleView(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 Principale — Fusils de précision", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Fusils de précision", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
