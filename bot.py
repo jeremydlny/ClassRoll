@@ -25,7 +25,7 @@ load_dotenv(env_path)
 async def on_ready():
     logger.info(f"✅ Bot connecté: {bot.user} (ID: {bot.user.id if bot.user else 'N/A'})")
     try:
-        from commands import setup
+        from commands_simple import setup
         await setup(bot)
         synced = await bot.tree.sync()
         logger.info(f"✅ {len(synced)} commandes synchronisées")
@@ -38,6 +38,8 @@ def start_bot():
     if not discord_token:
         logger.error("DISCORD_BOT_TOKEN non trouvé dans _env/.env")
         return
+    
+    logger.info("🚀 Démarrage du bot...")
     try:
         bot.run(discord_token)
     except Exception as e:
