@@ -87,7 +87,29 @@ async def setup(bot):
         
         await interaction.response.send_message(embed=embed, view=view)
 
-    # Suppression de la commande /sync - synchronisation automatique au démarrage du bot
+    @bot.tree.command(name="reload", description="🔄 Recharge les commandes du bot (Admins uniquement)")
+    async def reload_commands(interaction: discord.Interaction):
+        # Vérifier si l'utilisateur a les permissions administrateur
+        if not interaction.user.guild_permissions.administrator:
+            return await interaction.response.send_message(
+                "❌ **Permission refusée** - Seuls les administrateurs peuvent utiliser cette commande.",
+                ephemeral=True
+            )
+        
+        await interaction.response.defer(ephemeral=True)
+        try:
+            synced = await bot.tree.sync()
+            await interaction.followup.send(
+                f"✅ **{len(synced)} commandes rechargées avec succès !**",
+                ephemeral=True
+            )
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ **Erreur lors du rechargement :** {str(e)}",
+                ephemeral=True
+            )
+
+    # Suppression de l'ancienne commande /sync - synchronisation automatique au démarrage du bot
 
     @bot.tree.command(name="delete", description="🧹 Supprime tous les messages du bot dans ce salon")
     async def slash_delete(interaction: discord.Interaction):
