@@ -52,7 +52,7 @@ class PrincipaleView(discord.ui.View):
         embed = discord.Embed(title="🔫 Principale — Mitrailleuses", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
-    @discord.ui.button(label="Fusils tactiques", style=discord.ButtonStyle.primary, row=2)
+    @discord.ui.button(label="🔫 Fusils tactiques", style=discord.ButtonStyle.primary, row=2)
     async def fusils_tactiques(self, interaction: discord.Interaction, button: discord.ui.Button):
         armes = find_category_list("Fusils tactiques")
         if not armes:
@@ -61,7 +61,7 @@ class PrincipaleView(discord.ui.View):
         embed = discord.Embed(title="🔫 Principale — Fusils tactiques", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
-    @discord.ui.button(label="Fusils de précision", style=discord.ButtonStyle.primary, row=2)
+    @discord.ui.button(label="🔫 Fusils de précision", style=discord.ButtonStyle.primary, row=2)
     async def fusils_precision(self, interaction: discord.Interaction, button: discord.ui.Button):
         armes = find_category_list("Fusils de précision")
         if not armes:
