@@ -11,24 +11,36 @@ class RollView(discord.ui.View):
 
     @discord.ui.button(label='🔄 RE-ROLL', style=discord.ButtonStyle.primary)
     async def reroll(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Réponse immédiate pour montrer que le bouton a été cliqué
+        await interaction.response.defer()
+        
         update_stats("reroll")
         nouvelle_classe = generer_classe()
         self.classe = nouvelle_classe
         embed = create_class_embed(nouvelle_classe)
-        await interaction.response.edit_message(embed=embed, view=self)
+        
+        # Édition après coup pour une meilleure réactivité
+        await interaction.edit_original_response(embed=embed, view=self)
 
     @discord.ui.button(label='🎯 ARME SEULE', style=discord.ButtonStyle.success)
     async def arme_seule(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Réponse immédiate
+        await interaction.response.defer()
+        
         # Import local pour éviter les imports circulaires
         from views.armeView import ArmeView
         arme = generer_arme_aleatoire()
         embed = discord.Embed(title="🎯 Arme Aléatoire", color=0x0099ff, timestamp=datetime.now())
         embed.add_field(name="🔫 Votre arme", value=f"```{arme}```", inline=False)
         embed.set_footer(text="🍀 Bonne chance !")
-        await interaction.response.edit_message(embed=embed, view=ArmeView(self.classe))
+        
+        await interaction.edit_original_response(embed=embed, view=ArmeView(self.classe))
 
     @discord.ui.button(label='🏆 DÉFI', style=discord.ButtonStyle.danger)
     async def defi(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Réponse immédiate
+        await interaction.response.defer()
+        
         # Import local pour éviter les imports circulaires
         from views.defiView import DefiView
         from utils.classGenerator import defis_data
@@ -46,7 +58,8 @@ class RollView(discord.ui.View):
                     value=f"```{len(defis_list)} défis disponibles```",
                     inline=True
                 )
-        await interaction.response.edit_message(embed=embed, view=view)
+        
+        await interaction.edit_original_response(embed=embed, view=view)
 
 @lru_cache(maxsize=128)  # Cache pour éviter de recréer les mêmes embeds
 def _create_embed_cached(arme_principale, arme_secondaire, atout_1, atout_2, atout_3, equipement_tactique, equipement_mortel, timestamp_str):
