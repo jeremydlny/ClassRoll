@@ -38,6 +38,8 @@ def start_bot():
     if not discord_token:
         logger.error("DISCORD_BOT_TOKEN non trouvé dans _env/.env")
         return
+    
+    logger.info("🚀 Démarrage du bot...")
     try:
         bot.run(discord_token)
     except Exception as e:

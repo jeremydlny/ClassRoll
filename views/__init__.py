@@ -4,3 +4,4 @@ from .armeView import ArmeView
 from .defiView import DefiView
 from .principaleView import PrincipaleView
 from .secondaireView import SecondaireView
+from .deleteView import DeleteConfirmView
