@@ -7,13 +7,13 @@ class ArmeView(discord.ui.View):
         super().__init__(timeout=300)
         self.classe = classe
 
-    @discord.ui.button(label='🔄 RE-ROLL', style=discord.ButtonStyle.primary, row=0)
+    @discord.ui.button(label='🔄 RE-ROLL', style=discord.ButtonStyle.success, row=0)
     async def autre_arme(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         
         arme = generer_arme_aleatoire()
         embed = discord.Embed(title="🎯 Arme Aléatoire", color=0x0099ff, timestamp=datetime.now())
-        embed.add_field(name="🔫 Votre arme", value=f"```{arme}```", inline=False)
+        embed.add_field(name="🔫 Votre arme", value=f"```{arme}```", inline=True)
         embed.set_footer(text="🍀 Bonne chance !")
         await interaction.edit_original_response(embed=embed, view=self)
 
