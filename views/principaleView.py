@@ -1,22 +1,14 @@
 import discord
 from datetime import datetime
-from utils.classGenerator import find_category_list
+from utils.classGenerator import find_category_list, generer_classe
 import random
+from views.rollView import RollView, create_class_embed
 
 class PrincipaleView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=300)
 
-    @discord.ui.button(label="↩️ Retour", style=discord.ButtonStyle.secondary, row=2)
-    async def retour(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from views.rollView import RollView, create_class_embed
-        from utils.classGenerator import generer_classe
-        classe = generer_classe()
-        embed = create_class_embed(classe)
-        view = RollView(classe)
-        await interaction.response.edit_message(embed=embed, view=view)
-
-    @discord.ui.button(label="🎯 Fusils d'assaut", style=discord.ButtonStyle.primary, row=0)
+    @discord.ui.button(label="🔫 Fusils d'assaut", style=discord.ButtonStyle.primary, row=0)
     async def fusils_assaut(self, interaction: discord.Interaction, button: discord.ui.Button):
         armes = find_category_list("Fusils d'assaut")
         if not armes:
@@ -69,3 +61,12 @@ class PrincipaleView(discord.ui.View):
         arme = random.choice(armes)
         embed = discord.Embed(title="🔫 Principale — Fusils de précision", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
+
+    @discord.ui.button(label="↩️ Retour", style=discord.ButtonStyle.secondary, row=3)
+    async def retour(self, interaction: discord.Interaction, button: discord.ui.Button):
+        from views.rollView import RollView, create_class_embed
+        from utils.classGenerator import generer_classe
+        classe = generer_classe()
+        embed = create_class_embed(classe)
+        view = RollView(classe)
+        await interaction.response.edit_message(embed=embed, view=view)
