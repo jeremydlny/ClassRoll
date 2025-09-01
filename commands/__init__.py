@@ -87,15 +87,7 @@ async def setup(bot):
         
         await interaction.response.send_message(embed=embed, view=view)
 
-    @bot.tree.command(name="sync", description="🔄 Synchronise les commandes du bot")
-    @commands.is_owner()
-    async def sync(interaction: discord.Interaction):
-        await interaction.response.defer(ephemeral=True)
-        try:
-            synced = await bot.tree.sync()
-            await interaction.followup.send(f"✅ {len(synced)} commandes synchronisées !", ephemeral=True)
-        except Exception as e:
-            await interaction.followup.send(f"❌ Erreur lors de la synchronisation : {str(e)}", ephemeral=True)
+    # Suppression de la commande /sync - synchronisation automatique au démarrage du bot
 
     @bot.tree.command(name="delete", description="🧹 Supprime tous les messages du bot dans ce salon")
     async def slash_delete(interaction: discord.Interaction):
