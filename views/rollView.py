@@ -96,18 +96,6 @@ class RollView(discord.ui.View):
             timestamp=datetime.now()
         )
         await interaction.edit_original_response(embed=embed, view=view)
-            color=0xff4444,
-            timestamp=datetime.now()
-        )
-        for niveau, defis_list in defis_data.items():
-            if isinstance(defis_list, list):
-                embed.add_field(
-                    name=f"{niveau.title()}",
-                    value=f"```{len(defis_list)} défis disponibles```",
-                    inline=True
-                )
-        
-        await interaction.edit_original_response(embed=embed, view=view)
 
 @lru_cache(maxsize=128)  # Cache pour éviter de recréer les mêmes embeds
 def _create_embed_cached(arme_principale, arme_secondaire, atout_1, atout_2, atout_3, equipement_tactique, equipement_mortel, timestamp_str):

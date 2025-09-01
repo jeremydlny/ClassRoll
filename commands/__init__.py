@@ -151,8 +151,11 @@ async def setup(bot):
 
     @bot.tree.command(name="delete", description="🧹 Supprime tous les messages du bot dans ce salon")
     async def slash_delete(interaction: discord.Interaction):
+        # Réponse immédiate pour éviter l'expiration de l'interaction
+        await interaction.response.defer(ephemeral=True)
+        
         view = DeleteConfirmView(bot)
-        await interaction.response.send_message(
+        await interaction.followup.send(
             "⚠️ **Voulez-vous supprimer tous les messages du bot dans ce salon ?**\n\n*Cette action ne peut pas être annulée.*",
             view=view,
             ephemeral=True
