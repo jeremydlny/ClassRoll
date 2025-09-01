@@ -17,7 +17,7 @@ class ArmeView(discord.ui.View):
         embed.set_footer(text="🍀 Bonne chance !")
         await interaction.edit_original_response(embed=embed, view=self)
 
-    @discord.ui.button(label='↩️ RETOUR', style=discord.ButtonStyle.secondary, row=1)
+    @discord.ui.button(label='↩️ RETOUR', style=discord.ButtonStyle.secondary, row=0)
     async def retour(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         
