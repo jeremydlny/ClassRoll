@@ -6,7 +6,6 @@ from utils.classGenerator import generer_classe
 from views.principaleView import PrincipaleView
 from views.secondaireView import SecondaireView
 from views.rollView import RollView, create_class_embed
-from views import DeleteConfirmView
 
 async def setup(bot):
     # Variables pour stocker le dernier message de chaque commande par canal
@@ -102,9 +101,27 @@ async def setup(bot):
     async def slash_delete(interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=True)
         
-        view = DeleteConfirmView(bot)
-        await interaction.followup.send(
-            "⚠️ **Voulez-vous supprimer tous les messages du bot dans ce salon ?**\n\n*Cette action ne peut pas être annulée.*",
-            view=view,
-            ephemeral=True
-        )
+        channel = interaction.channel
+        deleted_count = 0
+        
+        try:
+            # Récupérer les messages du bot dans ce salon
+            async for message in channel.history(limit=None):
+                if message.author == bot.user:
+                    try:
+                        await message.delete()
+                        deleted_count += 1
+                    except (discord.NotFound, discord.Forbidden):
+                        # Message déjà supprimé ou pas de permissions
+                        pass
+            
+            await interaction.followup.send(
+                f"✅ **{deleted_count} message(s) supprimé(s) !**",
+                ephemeral=True
+            )
+            
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ **Erreur lors de la suppression :** {str(e)}",
+                ephemeral=True
+            )
