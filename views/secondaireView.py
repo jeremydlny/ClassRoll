@@ -9,6 +9,7 @@ class SecondaireView(discord.ui.View):
 
     @discord.ui.button(label="↩️ Retour", style=discord.ButtonStyle.secondary, row=1)
     async def retour(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Import local pour éviter les imports circulaires
         from views.rollView import RollView, create_class_embed
         from utils.classGenerator import generer_classe
         classe = generer_classe()

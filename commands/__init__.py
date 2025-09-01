@@ -16,14 +16,17 @@ async def setup(bot):
     last_defi_messages = {}
     last_aide_messages = {}
 
-    # Fonction helper pour supprimer l'ancien message
+    # Fonction helper optimisée pour supprimer l'ancien message
     async def delete_last_message(channel_id, message_dict):
         if channel_id in message_dict:
             try:
                 last_message = message_dict[channel_id]
+                # Suppression asynchrone sans attendre
                 await last_message.delete()
+                del message_dict[channel_id]  # Nettoyer le cache
             except (discord.NotFound, discord.Forbidden):
-                pass  # Message déjà supprimé ou pas les permissions
+                # Nettoyer le cache même si la suppression échoue
+                message_dict.pop(channel_id, None)
 
     # Commandes
     @bot.tree.command(name="roll", description="🎲 Génère une classe aléatoire complète")

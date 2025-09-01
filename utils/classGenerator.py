@@ -131,15 +131,20 @@ _refresh_cache()
 
 def generer_classe():
     """Générer une classe BO6 avec 1 atout par slot (si disponible)."""
-    # Sélection arme principale
+    # Sélection arme principale (plus rapide sans condition)
     arme_principale = random.choice(_CACHE['armes_principales']) if _CACHE['armes_principales'] else "Aucune arme principale disponible"
 
-    # Sélection arme secondaire (évite les doublons)
-    pool_secondaires = list(set(_CACHE['armes_principales'] + _CACHE['armes_secondaires']))
-    if arme_principale in pool_secondaires:
-        pool_secondaires.remove(arme_principale)
-    
-    arme_secondaire = random.choice(pool_secondaires) if pool_secondaires else "Aucune arme secondaire disponible"
+    # Sélection arme secondaire optimisée (évite les doublons sans créer de set)
+    if _CACHE['armes_secondaires']:
+        # Essayer d'abord de prendre dans les armes secondaires
+        arme_secondaire = random.choice(_CACHE['armes_secondaires'])
+        # Si c'est la même que la principale, réessayer une fois
+        if arme_secondaire == arme_principale and len(_CACHE['armes_secondaires']) > 1:
+            autres = [a for a in _CACHE['armes_secondaires'] if a != arme_principale]
+            if autres:
+                arme_secondaire = random.choice(autres)
+    else:
+        arme_secondaire = "Aucune arme secondaire disponible"
 
     return {
         "arme_principale": arme_principale,
@@ -149,14 +154,4 @@ def generer_classe():
         "atout_3": random.choice(_CACHE['atouts_3']) if _CACHE['atouts_3'] else "Aucun atout slot 3",
         "equipement_tactique": random.choice(_CACHE['tactiques']) if _CACHE['tactiques'] else "Aucun équipement tactique",
         "equipement_mortel": random.choice(_CACHE['mortels']) if _CACHE['mortels'] else "Aucun équipement mortel"
-    }
-
-    return {
-        "arme_principale": arme_principale,
-        "arme_secondaire": arme_secondaire,
-        "atout_1": random.choice(a1) if a1 else "Aucun atout slot 1",
-        "atout_2": random.choice(a2) if a2 else "Aucun atout slot 2",
-        "atout_3": random.choice(a3) if a3 else "Aucun atout slot 3",
-        "equipement_tactique": random.choice(tactiques) if tactiques else "Aucun équipement tactique",
-        "equipement_mortel": random.choice(mortels) if mortels else "Aucun équipement mortel"
     }

@@ -1,8 +1,7 @@
 import discord
 from datetime import datetime
-from utils.classGenerator import find_category_list, generer_classe
+from utils.classGenerator import find_category_list
 import random
-from views.rollView import RollView, create_class_embed
 
 class PrincipaleView(discord.ui.View):
     def __init__(self):
@@ -64,6 +63,7 @@ class PrincipaleView(discord.ui.View):
 
     @discord.ui.button(label="↩️ Retour", style=discord.ButtonStyle.secondary, row=3)
     async def retour(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Import local pour éviter les imports circulaires
         from views.rollView import RollView, create_class_embed
         from utils.classGenerator import generer_classe
         classe = generer_classe()
