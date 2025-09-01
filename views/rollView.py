@@ -9,7 +9,7 @@ class RollView(discord.ui.View):
         super().__init__(timeout=300)
         self.classe = classe
 
-    @discord.ui.button(label='🔄 RE-ROLL', style=discord.ButtonStyle.primary)
+    @discord.ui.button(label='🔄 RE-ROLL', style=discord.ButtonStyle.primary, row=0)
     async def reroll(self, interaction: discord.Interaction, button: discord.ui.Button):
         # Réponse immédiate pour montrer que le bouton a été cliqué
         await interaction.response.defer()
@@ -22,7 +22,7 @@ class RollView(discord.ui.View):
         # Édition après coup pour une meilleure réactivité
         await interaction.edit_original_response(embed=embed, view=self)
 
-    @discord.ui.button(label='🎯 ARME SEULE', style=discord.ButtonStyle.success)
+    @discord.ui.button(label='🎯 ARME SEULE', style=discord.ButtonStyle.success, row=0)
     async def arme_seule(self, interaction: discord.Interaction, button: discord.ui.Button):
         # Réponse immédiate
         await interaction.response.defer()
@@ -36,7 +36,7 @@ class RollView(discord.ui.View):
         
         await interaction.edit_original_response(embed=embed, view=ArmeView(self.classe))
 
-    @discord.ui.button(label='🏆 DÉFI', style=discord.ButtonStyle.danger)
+    @discord.ui.button(label='🏆 DÉFI', style=discord.ButtonStyle.danger, row=0)
     async def defi(self, interaction: discord.Interaction, button: discord.ui.Button):
         # Réponse immédiate
         await interaction.response.defer()
@@ -48,6 +48,54 @@ class RollView(discord.ui.View):
         embed = discord.Embed(
             title="🏆 Choisissez votre défi !",
             description="Sélectionnez le niveau de difficulté :",
+            color=0xff4444,
+            timestamp=datetime.now()
+        )
+        for niveau, defis_list in defis_data.items():
+            if isinstance(defis_list, list):
+                embed.add_field(
+                    name=f"{niveau.title()}",
+                    value=f"```{len(defis_list)} défis disponibles```",
+                    inline=True
+                )
+        
+        await interaction.edit_original_response(embed=embed, view=view)
+
+    @discord.ui.button(label='🔫 ARME PRINCIPALE', style=discord.ButtonStyle.secondary, row=1)
+    async def arme_principale_direct(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Réponse immédiate
+        await interaction.response.defer()
+        
+        # Import local pour éviter les imports circulaires
+        from views.principaleView import PrincipaleView
+        update_stats("principale")
+        
+        view = PrincipaleView()
+        embed = discord.Embed(
+            title="🔫 Armes principales",
+            description="Choisissez une catégorie pour obtenir une arme aléatoire dedans.",
+            color=0x00ccff,
+            timestamp=datetime.now()
+        )
+        await interaction.edit_original_response(embed=embed, view=view)
+
+    @discord.ui.button(label='🗡️ ARME SECONDAIRE', style=discord.ButtonStyle.secondary, row=1)
+    async def arme_secondaire_direct(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Réponse immédiate
+        await interaction.response.defer()
+        
+        # Import local pour éviter les imports circulaires
+        from views.secondaireView import SecondaireView
+        update_stats("secondaire")
+        
+        view = SecondaireView()
+        embed = discord.Embed(
+            title="🗡️ Armes secondaires",
+            description="Choisissez une catégorie (Pistolets, Lanceurs ou Spécial) pour obtenir une arme aléatoire dedans.",
+            color=0x00ccff,
+            timestamp=datetime.now()
+        )
+        await interaction.edit_original_response(embed=embed, view=view)
             color=0xff4444,
             timestamp=datetime.now()
         )
