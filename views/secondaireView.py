@@ -3,7 +3,7 @@ from datetime import datetime
 from utils.classGenerator import find_category_list
 import random
 
-class Pick2View(discord.ui.View):
+class SecondaireView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=300)
 
@@ -13,7 +13,7 @@ class Pick2View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🗡️ PICK 2 — Pistolets", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Secondaire — Pistolets", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Lanceurs", style=discord.ButtonStyle.primary, row=0)
@@ -22,7 +22,7 @@ class Pick2View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🗡️ PICK 2 — Lanceurs", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Secondaire — Lanceurs", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Spécial", style=discord.ButtonStyle.primary, row=0)
@@ -31,5 +31,5 @@ class Pick2View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🗡️ PICK 2 — Spécial", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Secondaire — Spécial", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)

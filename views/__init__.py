@@ -2,5 +2,5 @@
 from .rollView import RollView, create_class_embed
 from .armeView import ArmeView
 from .defiView import DefiView
-from .pick1View import Pick1View
-from .pick2View import Pick2View
+from .principaleView import PrincipaleView
+from .secondaireView import SecondaireView

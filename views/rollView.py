@@ -22,7 +22,7 @@ class RollView(discord.ui.View):
     async def arme_seule(self, interaction: discord.Interaction, button: discord.ui.Button):
         arme = generer_arme_aleatoire()
         embed = discord.Embed(title="🎯 Arme Aléatoire", color=0x0099ff, timestamp=datetime.now())
-        embed.add_field(name="🔫 Votre arme", value=f"**{arme}**", inline=False)
+        embed.add_field(name="🔫 Votre arme", value=f"```{arme}```", inline=False)
         embed.set_footer(text="🍀 Bonne chance !")
         await interaction.response.edit_message(embed=embed, view=ArmeView(self.classe))
 

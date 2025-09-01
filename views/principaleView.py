@@ -3,7 +3,7 @@ from datetime import datetime
 from utils.classGenerator import find_category_list
 import random
 
-class Pick1View(discord.ui.View):
+class PrincipaleView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=300)
 
@@ -13,7 +13,7 @@ class Pick1View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 PICK 1 — Fusils d'assaut", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Fusils d'assaut", description=f"```{arme}```", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Mitraillettes", style=discord.ButtonStyle.primary, row=0)
@@ -22,7 +22,7 @@ class Pick1View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 PICK 1 — Mitraillettes", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Mitraillettes", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Fusils à pompe", style=discord.ButtonStyle.primary, row=1)
@@ -31,7 +31,7 @@ class Pick1View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 PICK 1 — Fusils à pompe", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Fusils à pompe", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Mitrailleuses", style=discord.ButtonStyle.primary, row=1)
@@ -40,7 +40,7 @@ class Pick1View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 PICK 1 — Mitrailleuses", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Mitrailleuses", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Fusils tactiques", style=discord.ButtonStyle.primary, row=2)
@@ -49,7 +49,7 @@ class Pick1View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 PICK 1 — Fusils tactiques", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Fusils tactiques", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)
 
     @discord.ui.button(label="Fusils de précision", style=discord.ButtonStyle.primary, row=2)
@@ -58,5 +58,5 @@ class Pick1View(discord.ui.View):
         if not armes:
             return await interaction.response.send_message("❌ Aucune arme dans cette catégorie", ephemeral=True)
         arme = random.choice(armes)
-        embed = discord.Embed(title="🔫 PICK 1 — Fusils de précision", description=f"**{arme}**", color=0x00ccff, timestamp=datetime.now())
+        embed = discord.Embed(title="🔫 Principale — Fusils de précision", description=f"```{arme}``", color=0x00ccff, timestamp=datetime.now())
         await interaction.response.edit_message(embed=embed, view=self)

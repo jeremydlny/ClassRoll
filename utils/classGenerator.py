@@ -13,32 +13,54 @@ def safe_list(d, key):
         return v
     return []
 
-# Map des catégories (constante)
+# Maps des catégories (constantes)
 CATEGORY_KEY_MAP = {
+    # Armes principales
     "Fusils d'assaut": "fusils_d_assaut",
     "Mitraillettes": "mitraillettes",
     "Fusils à pompe": "fusils_a_pompe",
     "Mitrailleuses": "mitrailleuses",
     "Fusils tactiques": "fusils_tactiques",
-    "Fusils de précision": "fusils_de_precision"
+    "Fusils de précision": "fusils_de_precision",
+    # Armes secondaires
+    "Pistolets": "pistolets",
+    "Lanceurs": "lanceurs",
+    "Spécial": "special"
 }
 
-# Pré-calcul des catégories disponibles
-_armes_principales_cache = {}
+# Cache pour les armes
+_armes_cache = {
+    'principales': {},
+    'secondaires': {}
+}
 
 def _init_cache():
-    """Initialise le cache des armes principales"""
-    global _armes_principales_cache
+    """Initialise le cache des armes"""
+    global _armes_cache
+    
+    # Cache des armes principales
     if "principales" in armes_data:
         for display_name, key in CATEGORY_KEY_MAP.items():
             if key in armes_data["principales"]:
-                _armes_principales_cache[display_name] = armes_data["principales"][key]
+                _armes_cache['principales'][display_name] = armes_data["principales"][key]
+    
+    # Cache des armes secondaires
+    if "secondaires" in armes_data:
+        for display_name, key in CATEGORY_KEY_MAP.items():
+            if key in armes_data["secondaires"]:
+                _armes_cache['secondaires'][display_name] = armes_data["secondaires"][key]
 
 _init_cache()
 
 def find_category_list(category):
     """Retourne la liste des armes d'une catégorie donnée depuis le cache"""
-    return _armes_principales_cache.get(category, [])
+    # Cherche d'abord dans les armes principales
+    if category in _armes_cache['principales']:
+        return _armes_cache['principales'][category]
+    # Sinon cherche dans les armes secondaires
+    if category in _armes_cache['secondaires']:
+        return _armes_cache['secondaires'][category]
+    return []
 
 def generer_arme_aleatoire():
     """Fonction simplifiée pour générer une arme aléatoire"""

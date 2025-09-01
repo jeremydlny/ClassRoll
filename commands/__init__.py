@@ -3,14 +3,27 @@ import discord
 from datetime import datetime
 from utils.stats import update_stats
 from utils.classGenerator import armes_data, safe_list
-from views.pick1View import Pick1View
-from views.pick2View import Pick2View
+from views.principaleView import PrincipaleView
+from views.secondaireView import SecondaireView
 from views.rollView import RollView, create_class_embed
 from utils.classGenerator import generer_classe
 
 async def setup(bot):
-    # Variable pour stocker le dernier message de roll par canal
+    # Variables pour stocker le dernier message de chaque commande par canal
     last_roll_messages = {}
+    last_principale_messages = {}
+    last_secondaire_messages = {}
+    last_defi_messages = {}
+    last_aide_messages = {}
+
+    # Fonction helper pour supprimer l'ancien message
+    async def delete_last_message(channel_id, message_dict):
+        if channel_id in message_dict:
+            try:
+                last_message = message_dict[channel_id]
+                await last_message.delete()
+            except (discord.NotFound, discord.Forbidden):
+                pass  # Message déjà supprimé ou pas les permissions
 
     # Commandes
     @bot.tree.command(name="roll", description="🎲 Génère une classe aléatoire complète")
@@ -37,76 +50,83 @@ async def setup(bot):
         message = await interaction.original_response()
         last_roll_messages[channel_id] = message
 
-    @bot.tree.command(name="pick1", description="🔫 Choisir une arme principale par catégorie")
-    async def slash_pick1(interaction: discord.Interaction):
-        update_stats("pick1")
-        view = Pick1View()
+    @bot.tree.command(name="principale", description="🔫 Choisir une arme principale par catégorie")
+    async def slash_principale(interaction: discord.Interaction):
+        update_stats("principale")
+        
+        # Supprime le dernier message de principale dans ce canal s'il existe
+        channel_id = interaction.channel_id
+        await delete_last_message(channel_id, last_principale_messages)
+        
+        view = PrincipaleView()
         embed = discord.Embed(
-            title="🔫 PICK 1 — Armes principales",
+            title="🔫 Armes principales",
             description="Choisissez une catégorie pour obtenir une arme aléatoire dedans.",
             color=0x00ccff,
             timestamp=datetime.now()
         )
         await interaction.response.send_message(embed=embed, view=view)
+        # Stocke la référence du nouveau message
+        message = await interaction.original_response()
+        last_principale_messages[channel_id] = message
 
-    @bot.tree.command(name="pick2", description="🗡️ Choisir une arme secondaire par catégorie")
-    async def slash_pick2(interaction: discord.Interaction):
-        update_stats("pick2")
-        view = Pick2View()
+    @bot.tree.command(name="secondaire", description="🗡️ Choisir une arme secondaire par catégorie")
+    async def slash_secondaire(interaction: discord.Interaction):
+        update_stats("secondaire")
+        
+        # Supprime le dernier message de secondaire dans ce canal s'il existe
+        channel_id = interaction.channel_id
+        await delete_last_message(channel_id, last_secondaire_messages)
+        
+        view = SecondaireView()
         embed = discord.Embed(
-            title="🗡️ PICK 2 — Armes secondaires",
+            title="🗡️ Armes secondaires",
             description="Choisissez une catégorie (Pistolets, Lanceurs ou Spécial) pour obtenir une arme aléatoire dedans.",
             color=0x00ccff,
             timestamp=datetime.now()
         )
         await interaction.response.send_message(embed=embed, view=view)
+        # Stocke la référence du nouveau message
+        message = await interaction.original_response()
+        last_secondaire_messages[channel_id] = message
+
+    @bot.tree.command(name="défis", description="🏆 Choisir un défi aléatoire")
+    async def slash_defis(interaction: discord.Interaction):
+        update_stats("defis")
+        from views.defiView import DefiView, create_defi_embed
+        
+        # Supprime le dernier message de défi dans ce canal s'il existe
+        channel_id = interaction.channel_id
+        await delete_last_message(channel_id, last_defi_messages)
+        
+        view = DefiView()
+        embed = create_defi_embed()
+        
+        await interaction.response.send_message(embed=embed, view=view)
+        # Stocke la référence du nouveau message
+        message = await interaction.original_response()
+        last_defi_messages[channel_id] = message
 
     @bot.tree.command(name="aide", description="📖 Affiche l'aide du bot BO6")
     async def slash_aide(interaction: discord.Interaction):
-        embed = discord.Embed(title="📖 Aide - WeaponRoll", color=0x0099ff, timestamp=datetime.now())
-        embed.add_field(
-            name="🎲 /roll",
-            value=(
-                "Génère une classe BO6 complète avec :\n"
-                f"- {len(safe_list(armes_data,'principales'))} armes principales\n"
-                f"- {len(safe_list(armes_data,'secondaires'))} armes secondaires\n"
-                "- 3 atouts (1 par slot) si définis dans atouts.json\n"
-                "- Équipements (tactiques & mortels)\n"
-                "- Boutons : RE-ROLL, ARME SEULE, DÉFI"
-            ),
-            inline=False
-        )
-        embed.add_field(
-            name="🎯 /pick1",
-            value=(
-                "Ouvre une interface pour choisir une arme principale aléatoire parmi les catégories :\n"
-                "- Fusils d'assaut\n"
-                "- Mitraillettes\n"
-                "- Fusils à pompe\n"
-                "- Mitrailleuses\n"
-                "- Fusils tactiques\n"
-                "- Fusils de précision"
-            ),
-            inline=False
-        )
-        embed.add_field(
-            name="🗡️ /pick2",
-            value=(
-                "Ouvre une interface pour choisir une arme secondaire aléatoire parmi les catégories :\n"
-                "- **Pistolets**\n"
-                "- **Lanceurs**\n"
-                "- **Spécial**"
-            ),
-            inline=False
-        )
-        embed.add_field(
-            name="🎯 Commandes de défi",
-            value=(
-                "Utilisez **!theme meta** pour des armes méta\n"
-                "Utilisez **!defi_equipe rouge** pour handicaper une équipe\n"
-                "Utilisez **!win bleu** pour victoire avec defi auto"
-            ),
-            inline=False
-        )
-        embed.set_footer(text="PPBot • Bot pour Resurgence/PartyPlay")
-        await interaction.response.send_message(embed=embed)
+        # Supprime le dernier message d'aide dans ce canal s'il existe
+        channel_id = interaction.channel_id
+        await delete_last_message(channel_id, last_aide_messages)
+        
+        from views.aideView import AideView, create_aide_embed
+        view = AideView()
+        embed = create_aide_embed()
+        
+        await interaction.response.send_message(embed=embed, view=view)
+        # Stocke la référence du nouveau message
+        message = await interaction.original_response()
+        last_aide_messages[channel_id] = message
+
+    @bot.tree.command(name="sync", description="🔄 Synchronise les commandes du bot")
+    @commands.is_owner()  # Seul le propriétaire du bot peut utiliser cette commande
+    async def sync(interaction: discord.Interaction):
+        try:
+            synced = await bot.tree.sync()
+            await interaction.response.send_message(f"✅ {len(synced)} commandes synchronisées !", ephemeral=True)
+        except Exception as e:
+            await interaction.response.send_message(f"❌ Erreur lors de la synchronisation : {str(e)}", ephemeral=True)
