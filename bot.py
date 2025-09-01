@@ -25,7 +25,7 @@ load_dotenv(env_path)
 async def on_ready():
     logger.info(f"✅ Bot connecté: {bot.user} (ID: {bot.user.id if bot.user else 'N/A'})")
     try:
-        from commands_simple import setup
+        from commands import setup
         await setup(bot)
         synced = await bot.tree.sync()
         logger.info(f"✅ {len(synced)} commandes synchronisées")

@@ -70,7 +70,7 @@ class RollView(discord.ui.View):
         view = PrincipaleView()
         embed = discord.Embed(
             title="🔫 Armes principales",
-            description="Choisissez une catégorie pour obtenir une arme aléatoire dedans.",
+            description="```Choisissez une catégorie pour obtenir une arme aléatoire dedans.```",
             color=0x00ccff,
             timestamp=datetime.now()
         )
@@ -85,7 +85,7 @@ class RollView(discord.ui.View):
         view = SecondaireView()
         embed = discord.Embed(
             title="🗡️ Armes secondaires",
-            description="Choisissez une catégorie (Pistolets, Lanceurs ou Spécial) pour obtenir une arme aléatoire dedans.",
+            description="```Choisissez une catégorie (Pistolets, Lanceurs ou Spécial) pour obtenir une arme aléatoire dedans.```",
             color=0x00ccff,
             timestamp=datetime.now()
         )
