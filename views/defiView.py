@@ -43,13 +43,13 @@ class DefiView(discord.ui.View):
             # Trouver le salon "classe" dans le serveur
             salon_classe = None
             for channel in interaction.guild.text_channels:
-                if channel.name.lower() == "classe":
+                if channel.name == "🔫・classe":
                     salon_classe = channel
                     break
             
             if not salon_classe:
                 return await interaction.followup.send(
-                    "❌ **Salon 'classe' introuvable** - Assurez-vous qu'un salon textuel nommé 'classe' existe sur ce serveur.",
+                    "❌ **Salon '🔫・classe' introuvable** - Assurez-vous qu'un salon textuel nommé '🔫・classe' existe sur ce serveur.",
                     ephemeral=True
                 )
             

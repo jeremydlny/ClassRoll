@@ -18,7 +18,7 @@ permissions.manage_messages = True  # Pour gérer les messages
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Configuration du salon pour sauvegarder les classes
-SALON_CLASSE_NAME = "classe"  # Nom du salon où envoyer les classes sauvegardées
+SALON_CLASSE_NAME = "🔫・classe"  # Nom du salon où envoyer les classes sauvegardées
 
 # Charger les variables d'environnement depuis _env/.env
 env_path = os.path.join(os.path.dirname(__file__), '_env', '.env')
