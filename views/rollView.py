@@ -95,6 +95,51 @@ class RollView(discord.ui.View):
         )
         await interaction.edit_original_response(embed=embed, view=view)
 
+    @discord.ui.button(label='SAUVEGARDER', style=discord.ButtonStyle.success, emoji='💾', row=2)
+    async def sauvegarder_classe(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer(ephemeral=True)
+        
+        try:
+            # Trouver le salon "classe" dans le serveur
+            salon_classe = None
+            for channel in interaction.guild.text_channels:
+                if channel.name.lower() == "classe":
+                    salon_classe = channel
+                    break
+            
+            if not salon_classe:
+                return await interaction.followup.send(
+                    "❌ **Salon 'classe' introuvable** - Assurez-vous qu'un salon textuel nommé 'classe' existe sur ce serveur.",
+                    ephemeral=True
+                )
+            
+            # Créer l'embed pour la classe sauvegardée
+            embed = discord.Embed(
+                title="💾 Classe Sauvegardée",
+                description=f"**Sauvegardée par {interaction.user.mention}**",
+                color=0x00ff00,
+                timestamp=datetime.now()
+            )
+            embed.add_field(name="🔫 Arme n°1", value=f"```{self.classe['arme_principale']}```", inline=True)
+            embed.add_field(name="🔫 Arme n°2", value=f"```{self.classe['arme_secondaire']}```", inline=True)
+            embed.add_field(name="", value="", inline=True)  # Spacer
+            embed.add_field(name="⚡ Atout 1", value=f"```{self.classe['atout_1']}```", inline=True)
+            embed.add_field(name="⚡ Atout 2", value=f"```{self.classe['atout_2']}```", inline=True)
+            embed.add_field(name="⚡ Atout 3", value=f"```{self.classe['atout_3']}```", inline=True)
+            embed.add_field(name="🎯 Équipement tactique", value=f"```{self.classe['equipement_tactique']}```", inline=True)
+            embed.add_field(name="💥 Équipement mortel", value=f"```{self.classe['equipement_mortel']}```", inline=True)
+            embed.add_field(name="", value="", inline=True)  # Spacer
+            embed.set_footer(text=f"Sauvegardée depuis #{interaction.channel.name}")
+            
+            # Envoyer la classe dans le salon "classe"
+            await salon_classe.send(embed=embed)
+            
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ **Erreur lors de la sauvegarde :** {str(e)}",
+                ephemeral=True
+            )
+
 @lru_cache(maxsize=128)  # Cache pour éviter de recréer les mêmes embeds
 def _create_embed_cached(arme_principale, arme_secondaire, atout_1, atout_2, atout_3, equipement_tactique, equipement_mortel, timestamp_str):
     """Version cachée de create_class_embed pour de meilleures performances"""

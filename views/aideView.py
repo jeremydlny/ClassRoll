@@ -16,7 +16,8 @@ def create_aide_embed():
             f"- {sum(len(armes) for armes in armes_data.get('secondaires', {}).values())} armes secondaires\n"
             "- 3 atouts (1 par slot) si définis dans atouts.json\n"
             "- Équipements (tactiques & mortels)\n"
-            "- Boutons : RE-ROLL, ARME SEULE, DÉFI"
+            "- Boutons : RE-ROLL, ARME SEULE, DÉFI, ARME PRINCIPALE, ARME SECONDAIRE\n"
+            "- **SAUVEGARDER** : Envoie la classe dans le salon #classe"
         ),
         inline=False
     )
