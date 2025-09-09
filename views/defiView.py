@@ -35,6 +35,54 @@ class DefiView(discord.ui.View):
         view = RollView(classe)
         await interaction.response.edit_message(embed=embed, view=view)
 
+    @discord.ui.button(label='SAUVEGARDER', style=discord.ButtonStyle.success, emoji='💾', row=1)
+    async def sauvegarder_defi(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer(ephemeral=True)
+        
+        try:
+            # Trouver le salon "classe" dans le serveur
+            salon_classe = None
+            for channel in interaction.guild.text_channels:
+                if channel.name.lower() == "classe":
+                    salon_classe = channel
+                    break
+            
+            if not salon_classe:
+                return await interaction.followup.send(
+                    "❌ **Salon 'classe' introuvable** - Assurez-vous qu'un salon textuel nommé 'classe' existe sur ce serveur.",
+                    ephemeral=True
+                )
+            
+            # Récupérer le défi depuis l'embed actuel
+            embed_actuel = interaction.message.embeds[0]
+            titre_defi = embed_actuel.title
+            
+            # Récupérer le contenu du défi depuis les fields
+            defi_contenu = ""
+            for field in embed_actuel.fields:
+                if "défi" in field.name.lower():
+                    defi_contenu = field.value.strip('```')
+                    break
+            
+            # Créer l'embed pour le défi sauvegardé
+            embed = discord.Embed(
+                title="💾 Défi Sauvegardé",
+                description=f"**Sauvegardé par {interaction.user.mention}**",
+                color=0x00ff00,
+                timestamp=datetime.now()
+            )
+            embed.add_field(name=titre_defi, value=f"```{defi_contenu}```", inline=False)
+            embed.set_footer(text=f"Sauvegardé depuis #{interaction.channel.name}")
+            
+            # Envoyer le défi dans le salon "classe"
+            await salon_classe.send(embed=embed)
+            
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ **Erreur lors de la sauvegarde :** {str(e)}",
+                ephemeral=True
+            )
+
     @discord.ui.button(label='🟢 Facile', style=discord.ButtonStyle.success, row=0)
     async def facile(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
