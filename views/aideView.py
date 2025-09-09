@@ -54,4 +54,16 @@ def create_aide_embed():
         ),
         inline=False
     )
+    embed.add_field(
+        name="💾 Sauvegarde",
+        value=(
+            "**Bouton SAUVEGARDER disponible partout :**\n"
+            "• Sauvegarde automatiquement dans le salon **#classe**\n"
+            "• Fonctionne depuis toutes les commandes (/roll, /principale, /secondaire, /défis)\n"
+            "• Sauvegarde **silencieuse** - aucune notification\n"
+            "• Format : embed vert avec mention et contenu complet\n"
+            "⚠️ **Requis :** Salon textuel nommé exactement `classe`"
+        ),
+        inline=False
+    )
     return embed
