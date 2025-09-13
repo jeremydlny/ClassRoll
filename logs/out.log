@@ -1,3 +1,64 @@
 2025-09-09 20:59:00,624 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
 2025-09-09 20:59:00,656 - discord.client - INFO - logging in using static token
 2025-09-09 20:59:01,662 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: cc094cda42982cbaaf13e30e24a7b549).
+2025-09-09 21:39:38,976 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-09 21:39:38,980 - discord.client - INFO - logging in using static token
+2025-09-09 21:39:40,253 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 768e811ba99cd1204c7dddca3856ca8a).
+2025-09-09 21:43:26,804 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-09 21:43:26,807 - discord.client - INFO - logging in using static token
+2025-09-09 21:43:27,670 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: c24904de5655d5aa52f30af606ae580d).
+2025-09-09 22:50:19,202 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-09 23:30:11,035 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 00:08:48,254 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 01:25:17,769 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 03:56:49,379 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 04:38:47,525 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 07:01:40,592 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 08:07:19,355 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 11:18:40,997 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 12:42:52,569 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 14:52:57,605 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 17:06:36,611 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 17:16:55,684 - discord.gateway - WARNING - Can't keep up, shard ID None websocket is 41.5s behind.
+2025-09-10 17:26:33,835 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 18:11:57,185 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 20:23:41,386 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 21:07:54,929 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-10 22:44:27,326 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 00:10:49,946 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 03:11:20,921 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 06:19:27,511 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 08:59:34,154 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 09:42:41,447 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 11:34:19,094 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 11:55:08,320 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 12:10:12,613 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 13:04:42,320 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 16:56:04,697 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 18:47:28,735 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 20:08:39,057 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 21:41:14,013 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-11 23:47:18,905 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 02:42:30,215 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 05:50:05,068 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 06:11:42,427 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 07:53:22,935 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 10:56:18,749 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 11:02:51,309 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 11:23:05,238 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 11:46:27,265 - discord.gateway - INFO - Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+2025-09-12 13:22:36,964 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-12 13:22:37,003 - discord.client - INFO - logging in using static token
+2025-09-12 13:22:38,040 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 97f68c99af4738cc015623b57d6603e2).
+2025-09-12 13:41:30,239 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+2025-09-12 13:55:26,609 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+2025-09-12 14:10:37,926 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+2025-09-12 14:48:03,239 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+2025-09-12 16:27:45,889 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+2025-09-13 13:14:03,301 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-13 13:14:03,340 - discord.client - INFO - logging in using static token
+2025-09-13 13:14:04,307 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ec31433a71be4761d4dc742187d08082).
+2025-09-13 14:55:39,062 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
+2025-09-13 17:16:54,594 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
+2025-09-13 19:23:15,897 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
+2025-09-13 19:56:18,738 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.

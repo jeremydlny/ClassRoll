@@ -84,3 +84,396 @@ Call stack:
     logger.info(f"\u2705 {len(synced)} commandes synchronis�es")
 Message: '\u2705 7 commandes synchronis�es'
 Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 45, in start_bot
+    logger.info("\U0001f680 D�marrage du bot...")
+Message: '\U0001f680 D�marrage du bot...'
+Arguments: ()
+[2025-09-09 21:39:38] [INFO    ] discord.client: logging in using static token
+[2025-09-09 21:39:40] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 768e811ba99cd1204c7dddca3856ca8a).
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 29, in on_ready
+    logger.info(f"\u2705 Bot connect�: {bot.user} (ID: {bot.user.id if bot.user else 'N/A'})")
+Message: '\u2705 Bot connect�: ClassRoll#2679 (ID: 1411063065675431996)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 34, in on_ready
+    logger.info(f"\u2705 {len(synced)} commandes synchronis�es")
+Message: '\u2705 7 commandes synchronis�es'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 45, in start_bot
+    logger.info("\U0001f680 D�marrage du bot...")
+Message: '\U0001f680 D�marrage du bot...'
+Arguments: ()
+[2025-09-09 21:43:26] [INFO    ] discord.client: logging in using static token
+[2025-09-09 21:43:27] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: c24904de5655d5aa52f30af606ae580d).
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 29, in on_ready
+    logger.info(f"\u2705 Bot connect�: {bot.user} (ID: {bot.user.id if bot.user else 'N/A'})")
+Message: '\u2705 Bot connect�: ClassRoll#2679 (ID: 1411063065675431996)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 34, in on_ready
+    logger.info(f"\u2705 {len(synced)} commandes synchronis�es")
+Message: '\u2705 7 commandes synchronis�es'
+Arguments: ()
+[2025-09-09 22:50:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-09 23:30:11] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 00:08:48] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 01:25:17] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 03:56:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 04:38:47] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 07:01:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 08:07:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 11:18:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 12:42:52] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 14:52:57] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 17:06:36] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 17:16:55] [WARNING ] discord.gateway: Can't keep up, shard ID None websocket is 41.5s behind.
+[2025-09-10 17:26:33] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 18:11:57] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 20:23:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 21:07:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-10 22:44:27] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 00:10:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 03:11:20] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 06:19:27] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 08:59:34] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 09:42:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 11:34:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 11:55:08] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 12:10:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 13:04:42] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 16:56:04] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 18:47:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 20:08:39] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 21:41:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-11 23:47:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 02:42:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 05:50:05] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 06:11:42] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 07:53:22] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 10:56:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 11:02:51] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 11:23:05] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+[2025-09-12 11:46:27] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session c24904de5655d5aa52f30af606ae580d.
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 45, in start_bot
+    logger.info("\U0001f680 D�marrage du bot...")
+Message: '\U0001f680 D�marrage du bot...'
+Arguments: ()
+[2025-09-12 13:22:37] [INFO    ] discord.client: logging in using static token
+[2025-09-12 13:22:38] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 97f68c99af4738cc015623b57d6603e2).
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 29, in on_ready
+    logger.info(f"\u2705 Bot connect�: {bot.user} (ID: {bot.user.id if bot.user else 'N/A'})")
+Message: '\u2705 Bot connect�: ClassRoll#2679 (ID: 1411063065675431996)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 34, in on_ready
+    logger.info(f"\u2705 {len(synced)} commandes synchronis�es")
+Message: '\u2705 7 commandes synchronis�es'
+Arguments: ()
+[2025-09-12 13:41:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+[2025-09-12 13:55:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+[2025-09-12 14:10:37] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+[2025-09-12 14:48:03] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+[2025-09-12 16:27:45] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 97f68c99af4738cc015623b57d6603e2.
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f680' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 45, in start_bot
+    logger.info("\U0001f680 D�marrage du bot...")
+Message: '\U0001f680 D�marrage du bot...'
+Arguments: ()
+[2025-09-13 13:14:03] [INFO    ] discord.client: logging in using static token
+[2025-09-13 13:14:04] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: ec31433a71be4761d4dc742187d08082).
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 29, in on_ready
+    logger.info(f"\u2705 Bot connect�: {bot.user} (ID: {bot.user.id if bot.user else 'N/A'})")
+Message: '\u2705 Bot connect�: ClassRoll#2679 (ID: 1411063065675431996)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 48: character maps to <undefined>
+Call stack:
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\run.py", line 11, in <module>
+    start_bot()
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 47, in start_bot
+    bot.run(discord_token)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 929, in run
+    asyncio.run(runner())
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 2050, in _run_once
+    handle._run()
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\Jeremy\AppData\Local\Programs\Python\Python313\Lib\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\Jeremy\Documents\Programmation\ClassRoll\bot.py", line 34, in on_ready
+    logger.info(f"\u2705 {len(synced)} commandes synchronis�es")
+Message: '\u2705 7 commandes synchronis�es'
+Arguments: ()
+[2025-09-13 14:55:39] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
+[2025-09-13 17:16:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
+[2025-09-13 19:23:15] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
+[2025-09-13 19:56:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.

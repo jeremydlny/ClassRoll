@@ -8,6 +8,14 @@ from views.secondaireView import SecondaireView
 from views.rollView import RollView, create_class_embed
 
 async def setup(bot):
+    @bot.tree.command(name="arme", description="🎯 Génère une arme aléatoire")
+    async def slash_arme(interaction: discord.Interaction):
+        from utils.classGenerator import generer_arme_aleatoire
+        arme = generer_arme_aleatoire()
+        embed = discord.Embed(title="🎯 Arme Aléatoire", color=0x0099ff, timestamp=datetime.now())
+        embed.add_field(name="🔫 Votre arme", value=f"```{arme}```", inline=False)
+        embed.set_footer(text="🍀 Bonne chance !")
+        await interaction.response.send_message(embed=embed)
     # Variables pour stocker le dernier message de chaque commande par canal
     last_roll_messages = {}
     last_principale_messages = {}

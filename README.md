@@ -26,7 +26,7 @@ ClassRoll est un bot Discord écrit en Python qui permet de générer des classe
 
 ### Configuration requise
 
-1. **Créez un salon textuel** nommé exactement `classe` sur votre serveur Discord
+1. **Créez un salon textuel** nommé exactement `🔫・classe` sur votre serveur Discord
 2. **Assurez-vous** que le bot a les permissions d'écriture dans ce salon
 
 ### Comment ça fonctionne
@@ -42,7 +42,7 @@ ClassRoll est un bot Discord écrit en Python qui permet de générer des classe
 
 1. Générez votre classe/arme/défi avec les commandes habituelles
 2. Cliquez sur le bouton **SAUVEGARDER**
-3. Le contenu est automatiquement envoyé dans le salon `#classe`
+3. Le contenu est automatiquement envoyé dans le salon `#🔫・classe`
 4. **Aucune notification** - la sauvegarde est silencieuse
 
 ### Format de sauvegarde
