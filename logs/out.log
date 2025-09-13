@@ -62,3 +62,18 @@
 2025-09-13 17:16:54,594 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
 2025-09-13 19:23:15,897 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
 2025-09-13 19:56:18,738 - discord.gateway - INFO - Shard ID None has successfully RESUMED session ec31433a71be4761d4dc742187d08082.
+2025-09-13 22:56:02,615 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-13 22:56:02,658 - discord.client - INFO - logging in using static token
+2025-09-13 22:56:03,779 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 595d3fffc2e7ffc096ef41bd284414c4).
+2025-09-13 23:32:37,523 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 595d3fffc2e7ffc096ef41bd284414c4.
+2025-09-14 00:46:32,184 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-14 00:46:32,230 - discord.client - INFO - logging in using static token
+2025-09-14 00:46:33,436 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: eed85646483cfede440a34c56705a141).
+2025-09-14 00:46:40,452 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1415002326451748996/messages/1416513885913219164 responded with 429. Retrying in 0.30 seconds.
+2025-09-14 00:46:41,114 - discord.http - WARNING - We are being rate limited. DELETE https://discord.com/api/v10/channels/1415002326451748996/messages/1416507962901663935 responded with 429. Retrying in 0.49 seconds.
+2025-09-14 00:50:26,627 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-14 00:50:26,630 - discord.client - INFO - logging in using static token
+2025-09-14 00:50:27,730 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: b64eaafb719215ac4ea3b65f075349dd).
+2025-09-14 00:52:49,354 - discord.client - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-09-14 00:52:49,357 - discord.client - INFO - logging in using static token
+2025-09-14 00:52:50,796 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e1eecb3c0b14ca143a760626491d8ad8).

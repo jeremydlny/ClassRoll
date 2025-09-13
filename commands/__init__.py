@@ -11,11 +11,13 @@ async def setup(bot):
     @bot.tree.command(name="arme", description="🎯 Génère une arme aléatoire")
     async def slash_arme(interaction: discord.Interaction):
         from utils.classGenerator import generer_arme_aleatoire
+        from views.armeView import ArmeView
         arme = generer_arme_aleatoire()
         embed = discord.Embed(title="🎯 Arme Aléatoire", color=0x0099ff, timestamp=datetime.now())
         embed.add_field(name="🔫 Votre arme", value=f"```{arme}```", inline=False)
         embed.set_footer(text="🍀 Bonne chance !")
-        await interaction.response.send_message(embed=embed)
+        view = ArmeView()
+        await interaction.response.send_message(embed=embed, view=view)
     # Variables pour stocker le dernier message de chaque commande par canal
     last_roll_messages = {}
     last_principale_messages = {}
@@ -49,6 +51,15 @@ async def setup(bot):
         message = await interaction.original_response()
         last_roll_messages[channel_id] = message
 
+        # Supprime le message après 60 secondes
+        async def delete_later(msg):
+            await discord.utils.sleep_until(datetime.now().timestamp() + 60)
+            try:
+                await msg.delete()
+            except Exception:
+                pass
+        bot.loop.create_task(delete_later(message))
+
     @bot.tree.command(name="principale", description="🔫 Choisir une arme principale par catégorie")
     async def slash_principale(interaction: discord.Interaction):
         update_stats("principale")
@@ -62,6 +73,16 @@ async def setup(bot):
         )
         
         await interaction.response.send_message(embed=embed, view=view)
+
+        # Supprime le message après 60 secondes
+        message = await interaction.original_response()
+        async def delete_later(msg):
+            await discord.utils.sleep_until(datetime.now().timestamp() + 60)
+            try:
+                await msg.delete()
+            except Exception:
+                pass
+        bot.loop.create_task(delete_later(message))
 
     @bot.tree.command(name="secondaire", description="🗡️ Choisir une arme secondaire par catégorie")
     async def slash_secondaire(interaction: discord.Interaction):

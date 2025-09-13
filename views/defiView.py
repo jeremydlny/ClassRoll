@@ -40,6 +40,11 @@ class DefiView(discord.ui.View):
         await interaction.response.defer(ephemeral=True)
         
         try:
+            # Marquer le message comme sauvegardé pour empêcher la suppression automatique
+            try:
+                interaction.message.saved = True
+            except Exception:
+                pass
             # Trouver le salon "classe" dans le serveur
             salon_classe = None
             for channel in interaction.guild.text_channels:
@@ -74,7 +79,14 @@ class DefiView(discord.ui.View):
             embed.add_field(name=titre_defi, value=f"```{defi_contenu}```", inline=False)
             embed.set_footer(text=f"Sauvegardé depuis #{interaction.channel.name}")
             
-            # Envoyer le défi dans le salon "classe"
+            # Supprimer les anciens messages si plus de 9 déjà présents
+            messages = [msg async for msg in salon_classe.history(limit=50) if msg.author == interaction.client.user]
+            if len(messages) >= 10:
+                oldest = messages[0]
+                try:
+                    await oldest.delete()
+                except Exception:
+                    pass
             await salon_classe.send(embed=embed)
             
         except Exception as e:
