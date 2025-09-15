@@ -1,0 +1,21 @@
+{
+  "name": "classroll-discord-bot",
+  "version": "1.0.0",
+  "description": "Bot Discord pour la génération de classes et défis Call of Duty Black Ops 6",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": ["discord", "bot", "call-of-duty", "black-ops-6", "gaming"],
+  "author": "jeremydlny",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
